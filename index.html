@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Spokane — Jon & Sarah Washey</title>
+<style>
+  :root {
+    --primary: #0D1421;
+    --accent: #B8933A;
+    --accent-light: #F5EDD8;
+    --blue: #1A56DB;
+    --blue-light: #EBF2FF;
+    --surface: #FFFFFF;
+    --surface-2: #F7F8FA;
+    --border: #E4E7EB;
+    --text: #111827;
+    --text-2: #6B7280;
+    --text-3: #9CA3AF;
+    --green: #15803D;
+    --green-light: #F0FDF4;
+    --red: #DC2626;
+    --red-light: #FEF2F2;
+    --amber: #D97706;
+    --amber-light: #FFFBEB;
+    --purple: #7C3AED;
+    --purple-light: #F5F3FF;
+    --jon: #1D4ED8;
+    --sarah: #BE185D;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #F0F2F5; color: var(--text); font-size: 14px;
+    line-height: 1.5; -webkit-font-smoothing: antialiased;
+  }
+
+  /* HEADER */
+  .header { background: var(--primary); padding: 20px 16px 0; position: sticky; top: 0; z-index: 100; }
+  .header-top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 14px; gap: 10px; }
+  .header-title { color: #FFF; font-size: 17px; font-weight: 700; letter-spacing: -0.3px; }
+  .header-sub { color: var(--accent); font-size: 12px; margin-top: 3px; font-weight: 500; }
+  .header-actions { display: flex; gap: 8px; flex-shrink: 0; }
+  .hbtn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+          color: rgba(255,255,255,0.85); font-size: 11px; font-weight: 600; padding: 5px 10px;
+          border-radius: 6px; cursor: pointer; white-space: nowrap; }
+  .hbtn:active { opacity: 0.7; }
+
+  /* TABS */
+  .tabs { display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch;
+          scrollbar-width: none; border-top: 1px solid rgba(255,255,255,0.08); }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { flex: 0 0 auto; padding: 12px 15px; font-size: 13px; font-weight: 600;
+         color: rgba(255,255,255,0.45); cursor: pointer; white-space: nowrap;
+         border-bottom: 2px solid transparent; transition: color 0.15s; }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* LAYOUT */
+  .section { display: none; padding: 20px 16px; max-width: 580px; margin: 0 auto; }
+  .section.active { display: block; }
+
+  /* SHORTLIST */
+  .shortlist { background: var(--surface); border-radius: 12px; border: 1px solid var(--border);
+               overflow: hidden; margin-bottom: 20px; }
+  .shortlist-header { padding: 13px 16px; border-bottom: 1px solid var(--border);
+                      background: var(--surface-2); display: flex; align-items: center; gap: 8px; }
+  .shortlist-header-title { font-size: 13px; font-weight: 700; }
+  .shortlist-body { padding: 14px 16px; }
+  .shortlist-empty { font-size: 13px; color: var(--text-3); }
+  .shortlist-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .shortlist-col-label { font-size: 10px; font-weight: 700; text-transform: uppercase;
+                         letter-spacing: 0.8px; margin-bottom: 8px; }
+  .shortlist-col-label.jon { color: var(--jon); }
+  .shortlist-col-label.sarah { color: var(--sarah); }
+  .shortlist-col-label.both { color: var(--green); }
+  .shortlist-entry { font-size: 12px; padding: 5px 0; border-bottom: 1px solid #F3F4F6; }
+  .shortlist-entry:last-child { border-bottom: none; }
+  .shortlist-entry .s-addr { font-weight: 600; display: block; }
+  .shortlist-entry .s-price { color: var(--text-2); }
+  .both-block { grid-column: 1/-1; }
+
+  /* SUMMARY STRIP */
+  .summary-strip { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+  .strip-card { background: var(--surface); border-radius: 10px; border: 1px solid var(--border);
+                padding: 14px 12px; text-align: center; }
+  .strip-val { font-size: 20px; font-weight: 800; color: var(--primary); }
+  .strip-lbl { font-size: 11px; color: var(--text-2); margin-top: 3px; line-height: 1.3; }
+
+  /* ALERT */
+  .alert { border-radius: 10px; padding: 12px 14px; font-size: 13px; font-weight: 500;
+           margin-bottom: 16px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.45; }
+  .alert-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+  .alert-amber { background: var(--amber-light); border: 1px solid #FDE68A; color: #92400E; }
+  .alert-green { background: var(--green-light); border: 1px solid #BBF7D0; color: #166534; }
+  .alert-blue { background: var(--blue-light); border: 1px solid #BFDBFE; color: #1E40AF; }
+
+  /* SECTION HEADING */
+  .sh { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+        color: var(--text-3); margin: 24px 0 10px; padding-bottom: 8px;
+        border-bottom: 1px solid var(--border); }
+
+  /* PROPERTY CARD */
+  .card { background: var(--surface); border-radius: 14px; border: 1.5px solid var(--border);
+          margin-bottom: 16px; overflow: hidden; transition: border-color 0.2s; }
+  .card.both-want { border-color: #6EE7B7 !important; box-shadow: 0 0 0 3px rgba(21,128,61,0.12); }
+  .card.jon-want:not(.both-want) { border-color: #93C5FD !important; }
+  .card.sarah-want:not(.both-want):not(.jon-want) { border-color: #F9A8D4 !important; }
+
+  /* Cover photo */
+  .card-photo { position: relative; width: 100%; height: 210px; overflow: hidden;
+                background: #E5E7EB; }
+  .card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card-photo.hidden { display: none; }
+  .photo-toggle { position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.55);
+                  color: #FFF; font-size: 11px; font-weight: 600; padding: 4px 8px;
+                  border-radius: 5px; border: none; cursor: pointer; }
+
+  /* Card top bar */
+  .card-bar { display: flex; align-items: center; justify-content: space-between;
+              padding: 10px 14px; background: var(--surface-2);
+              border-bottom: 1px solid var(--border); gap: 8px; }
+  .card-bar.bar-amber { background: var(--amber-light); border-bottom-color: #FDE68A; }
+  .card-bar.bar-purple { background: var(--purple-light); border-bottom-color: #DDD6FE; }
+  .card-rank { font-size: 11px; font-weight: 700; color: var(--text-2); }
+  .card-rank.amber { color: var(--amber); }
+  .card-rank.purple { color: var(--purple); }
+  .tag-row { display: flex; gap: 5px; flex-wrap: wrap; }
+  .tag { font-size: 10px; font-weight: 700; letter-spacing: 0.3px; padding: 3px 8px;
+         border-radius: 4px; white-space: nowrap; }
+  .tag-amber { background: var(--amber); color: #FFF; }
+  .tag-green { background: var(--green); color: #FFF; }
+  .tag-blue { background: var(--blue); color: #FFF; }
+  .tag-slate { background: #475569; color: #FFF; }
+  .tag-red { background: var(--red); color: #FFF; }
+  .tag-purple { background: var(--purple); color: #FFF; }
+
+  /* Both want banner */
+  .both-banner { display: none; background: var(--green); color: #FFF;
+                 font-size: 12px; font-weight: 700; padding: 8px; text-align: center; }
+
+  /* Card body */
+  .card-main { padding: 16px; }
+  .card-price-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+  .card-price { font-size: 26px; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; }
+  .card-price-note { font-size: 12px; font-weight: 600; color: var(--green); }
+  .card-addr { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 14px; }
+  .why-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
+               color: var(--accent); margin-bottom: 8px; }
+  .why-title { font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 8px; line-height: 1.3; }
+  .why-body { font-size: 13px; color: #374151; line-height: 1.65; margin-bottom: 14px; }
+  .highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+  .hl { background: var(--surface-2); border-radius: 8px; padding: 10px 12px; border: 1px solid var(--border); }
+  .hl-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+              color: var(--text-3); margin-bottom: 4px; }
+  .hl-value { font-size: 13px; font-weight: 700; color: var(--text); }
+  .hl-value.good { color: var(--green); }
+  .hl-value.warn { color: var(--amber); }
+  .specs-strip { display: flex; border-radius: 8px; overflow: hidden; border: 1px solid var(--border);
+                 margin-bottom: 14px; }
+  .spec { flex: 1; padding: 9px 6px; text-align: center; border-right: 1px solid var(--border);
+          background: var(--surface-2); }
+  .spec:last-child { border-right: none; }
+  .spec-v { font-size: 15px; font-weight: 700; color: var(--primary); }
+  .spec-l { font-size: 10px; color: var(--text-3); margin-top: 2px; font-weight: 500; }
+
+  /* Card footer */
+  .card-foot { padding: 12px 14px; border-top: 1px solid var(--border); display: flex; gap: 8px; }
+  .btn { flex: 1; padding: 10px 12px; border-radius: 8px; font-size: 13px; font-weight: 600;
+         text-decoration: none; text-align: center; cursor: pointer; border: none;
+         display: flex; align-items: center; justify-content: center; gap: 6px; }
+  .btn:active { opacity: 0.75; }
+  .btn-dark { background: var(--primary); color: #FFF; }
+  .btn-outline { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
+  .btn-amber { background: var(--amber); color: #FFF; }
+  .btn-purple { background: var(--purple); color: #FFF; }
+
+  /* Vote row */
+  .vote-row { padding: 10px 14px 12px; background: #FAFBFC;
+              border-top: 1px solid var(--border);
+              display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vbtn { padding: 9px 8px; border-radius: 8px; border: 1.5px solid var(--border);
+          font-size: 12px; font-weight: 600; cursor: pointer; background: var(--surface);
+          color: var(--text-2); text-align: center; -webkit-tap-highlight-color: transparent;
+          transition: all 0.15s; line-height: 1.2; }
+  .vbtn.vbtn-jon { border-color: #BFDBFE; color: var(--jon); }
+  .vbtn.vbtn-jon.active { background: var(--jon); color: #FFF; border-color: var(--jon); }
+  .vbtn.vbtn-sarah { border-color: #FBCFE8; color: var(--sarah); }
+  .vbtn.vbtn-sarah.active { background: var(--sarah); color: #FFF; border-color: var(--sarah); }
+
+  /* INFO PANEL */
+  .panel { background: var(--surface); border-radius: 12px; border: 1px solid var(--border);
+           margin-bottom: 16px; overflow: hidden; }
+  .panel-head { padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--surface-2); }
+  .panel-title { font-size: 13px; font-weight: 700; }
+  .panel-body { padding: 4px 0; }
+  .panel-row { display: flex; justify-content: space-between; align-items: flex-start;
+               padding: 10px 16px; border-bottom: 1px solid #F9FAFB; gap: 16px; }
+  .panel-row:last-child { border-bottom: none; }
+  .pr-label { font-size: 12px; color: var(--text-2); flex: 0 0 45%; }
+  .pr-value { font-size: 13px; font-weight: 600; text-align: right; flex: 1; }
+  .pr-value.good { color: var(--green); }
+  .pr-value.warn { color: var(--amber); }
+  .pr-value.bad { color: var(--red); }
+
+  /* TABLE */
+  .tbl { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .tbl th { background: var(--primary); color: #FFF; padding: 10px 12px; text-align: left; font-size: 11px; font-weight: 600; }
+  .tbl td { padding: 9px 12px; border-bottom: 1px solid #F3F4F6; }
+  .tbl tr:last-child td { border-bottom: none; }
+  .tbl tr.row-amber td { background: var(--amber-light); }
+  .tbl tr.row-purple td { background: var(--purple-light); }
+  .tbl-wrap { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 12px; }
+
+  /* HERO */
+  .hero { background: var(--primary); color: #FFF; border-radius: 14px;
+          padding: 22px 18px; margin-bottom: 20px; }
+  .hero-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 1px;
+                  text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .hero-title { font-size: 21px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; }
+  .hero-sub { font-size: 13px; color: rgba(255,255,255,0.65); margin-top: 8px; line-height: 1.5; }
+
+  /* GOBIG HERO */
+  .gobig-hero { background: linear-gradient(135deg, #2E1065, var(--purple));
+                color: #FFF; border-radius: 14px; padding: 22px 18px; margin-bottom: 20px; }
+  .gobig-hero .hero-eyebrow { color: #C4B5FD; }
+
+  /* PAY COMPARE */
+  .pay-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+  .pay-col { border-radius: 10px; padding: 16px 12px; text-align: center; border: 1.5px solid; }
+  .pay-col.standard { background: var(--blue-light); border-color: #BFDBFE; }
+  .pay-col.gobig { background: var(--purple-light); border-color: #DDD6FE; }
+  .pay-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-2); }
+  .pay-amount { font-size: 24px; font-weight: 800; margin: 6px 0 4px; }
+  .pay-amount.standard { color: var(--primary); }
+  .pay-amount.gobig { color: var(--purple); }
+  .pay-desc { font-size: 11px; color: var(--text-2); line-height: 1.4; }
+
+  /* ITINERARY */
+  .day-hd { background: var(--primary); color: #FFF; border-radius: 10px;
+             padding: 12px 14px; margin: 20px 0 12px; }
+  .day-hd-name { font-size: 14px; font-weight: 700; }
+  .day-hd-sub { font-size: 11px; color: var(--accent); margin-top: 3px; }
+  .iti-item { display: flex; gap: 12px; padding: 8px 0; border-bottom: 1px solid #F3F4F6; }
+  .iti-item:last-child { border-bottom: none; }
+  .iti-time { font-size: 11px; font-weight: 700; color: var(--accent); flex: 0 0 64px; padding-top: 1px; }
+  .iti-title { font-size: 13px; font-weight: 600; color: var(--text); }
+  .iti-note { font-size: 12px; color: var(--text-2); margin-top: 2px; line-height: 1.4; }
+
+  /* AIRBNB CARDS */
+  .bnb-card { background: var(--surface); border-radius: 12px; border: 1px solid var(--border);
+              margin-bottom: 12px; overflow: hidden; }
+  .bnb-card.recommended { border-color: var(--accent); }
+  .bnb-top { padding: 12px 14px; display: flex; justify-content: space-between;
+             align-items: flex-start; gap: 10px; }
+  .bnb-name { font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.3; }
+  .bnb-type { font-size: 11px; color: var(--text-2); margin-top: 3px; }
+  .bnb-price-col { text-align: right; flex-shrink: 0; }
+  .bnb-price { font-size: 18px; font-weight: 800; color: var(--primary); }
+  .bnb-nights { font-size: 11px; color: var(--text-2); }
+  .bnb-bottom { padding: 8px 14px 12px; display: flex; gap: 10px; align-items: center;
+                flex-wrap: wrap; border-top: 1px solid #F3F4F6; }
+  .bnb-rating { font-size: 12px; font-weight: 600; color: var(--text); }
+  .bnb-badge { font-size: 10px; font-weight: 700; padding: 3px 7px; border-radius: 4px;
+               background: var(--accent-light); color: var(--amber); border: 1px solid #E5C97B; }
+  .bnb-badge.rec { background: var(--accent); color: #FFF; border-color: var(--accent); }
+  .bnb-cancel { font-size: 11px; color: var(--green); font-weight: 600; margin-left: auto; }
+
+  /* AGENT */
+  .agent-card { background: var(--primary); color: #FFF; border-radius: 14px;
+                padding: 20px; margin-bottom: 16px; }
+  .agent-name { font-size: 20px; font-weight: 800; }
+  .agent-title { font-size: 12px; color: var(--accent); margin-top: 4px; }
+  .agent-links { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+  .agent-link { display: flex; align-items: center; gap: 12px;
+                background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+                border-radius: 10px; padding: 12px 14px; text-decoration: none;
+                color: #FFF; font-size: 13px; font-weight: 600; }
+  .agent-link-icon { font-size: 18px; }
+  .agent-link-sub { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+
+  /* CHECKLIST */
+  .cl-item { display: flex; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #F3F4F6; }
+  .cl-item:last-child { border-bottom: none; }
+  .cl-box { width: 20px; height: 20px; border-radius: 5px; border: 1.5px solid var(--border); flex-shrink: 0; margin-top: 1px; }
+  .cl-text { font-size: 13px; line-height: 1.45; }
+  .cl-owner { font-size: 11px; color: var(--blue); font-weight: 600; margin-top: 4px; }
+
+  /* RESALE BARS */
+  .rb-item { margin-bottom: 14px; }
+  .rb-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
+  .rb-label { font-size: 13px; font-weight: 600; }
+  .rb-val { font-size: 12px; font-weight: 700; }
+  .rb-val.high { color: var(--green); }
+  .rb-val.mid { color: var(--amber); }
+  .rb-val.low { color: var(--text-2); }
+  .rb-track { height: 6px; background: #E5E7EB; border-radius: 3px; overflow: hidden; }
+  .rb-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--blue), var(--primary)); }
+  .rb-sub { font-size: 11px; color: var(--text-3); margin-top: 4px; }
+
+  .footer-space { height: 48px; }
+  a { color: inherit; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="header-title">Spokane Property Guide</div>
+      <div class="header-sub">Jon & Sarah Washey — July 2026 Tour</div>
+    </div>
+    <div class="header-actions">
+      <button class="hbtn" onclick="togglePhotos()" id="photo-toggle-btn">Hide Photos</button>
+    </div>
+  </div>
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('overview')">Overview</div>
+    <div class="tab" onclick="showTab('listings')">Top Picks</div>
+    <div class="tab" onclick="showTab('gobig')">Go Big</div>
+    <div class="tab" onclick="showTab('valley')">Valley Comps</div>
+    <div class="tab" onclick="showTab('acreage')">Acreage</div>
+    <div class="tab" onclick="showTab('resale')">Resale</div>
+    <div class="tab" onclick="showTab('trip')">Trip Plan</div>
+    <div class="tab" onclick="showTab('agent')">Haydn</div>
+    <div class="tab" onclick="showTab('scenarios')">Strategy</div>
+  </div>
+</div>
+
+<!-- ═══ OVERVIEW ═══ -->
+<div class="section active" id="section-overview">
+  <div class="shortlist" id="shortlist-panel">
+    <div class="shortlist-header">
+      <span style="font-size:16px;">&#9825;</span>
+      <span class="shortlist-header-title">Jon & Sarah's Picks</span>
+    </div>
+    <div class="shortlist-body" id="shortlist-content">
+      <p class="shortlist-empty">Use the vote buttons on each property card to mark your favorites.</p>
+    </div>
+  </div>
+  <div class="alert alert-amber">
+    <span class="alert-icon">&#9888;</span>
+    <span><strong>2 properties flagged priority.</strong> 5907 N Fleming has 77 Zillow saves. Verify availability with Haydn before the tour.</span>
+  </div>
+  <div class="summary-strip">
+    <div class="strip-card"><div class="strip-val">$490K</div><div class="strip-lbl">Entry price</div></div>
+    <div class="strip-card"><div class="strip-val">9</div><div class="strip-lbl">Listings</div></div>
+    <div class="strip-card"><div class="strip-val">Jul 7–8</div><div class="strip-lbl">Tour dates</div></div>
+  </div>
+  <div class="sh">Must-Have Criteria</div>
+  <div class="panel"><div class="panel-body">
+    <div class="panel-row"><div class="pr-label">Style</div><div class="pr-value">Single-level ranch with full basement</div></div>
+    <div class="panel-row"><div class="pr-label">Bathrooms</div><div class="pr-value">3 BA minimum — no exceptions</div></div>
+    <div class="panel-row"><div class="pr-label">Bedrooms</div><div class="pr-value">4 BD preferred; 3 BD + office acceptable</div></div>
+    <div class="panel-row"><div class="pr-label">Internet</div><div class="pr-value good">Fiber or cable — verify per address</div></div>
+    <div class="panel-row"><div class="pr-label">Garage</div><div class="pr-value">2-car attached</div></div>
+    <div class="panel-row"><div class="pr-label">Budget</div><div class="pr-value">$490K–$550K (hard ceiling $580K)</div></div>
+    <div class="panel-row"><div class="pr-label">Auto-disqualify</div><div class="pr-value warn">No basement, no 3rd BA path</div></div>
+    <div class="panel-row"><div class="pr-label">Strong preference</div><div class="pr-value warn">Single-level ranch — multi-story considered only if everything else checks out</div></div>
+  </div></div>
+  <div class="sh">Price Summary</div>
+  <div class="tbl-wrap"><table class="tbl">
+    <tr><th>Property</th><th>Price</th><th>$/sqft</th></tr>
+    <tr class="row-amber"><td><strong>5907 N Fleming — Priority</strong></td><td>$490K</td><td>$163</td></tr>
+    <tr><td>1907 S Canyon Woods</td><td>$519K</td><td>$191</td></tr>
+    <tr><td>2524 S Bolivar (Valley)</td><td>$520K</td><td>$168</td></tr>
+    <tr><td>5207 S Dearborn Dr</td><td>$525K</td><td>$160</td></tr>
+    <tr><td>10810 E 35th (Valley)</td><td>$535K</td><td>$151</td></tr>
+    <tr><td>3211 E 43rd Ave</td><td>$540K</td><td>$206</td></tr>
+    <tr class="row-amber"><td><strong>5609 W Lowell Ave — Priority</strong></td><td>$545K</td><td>$183</td></tr>
+    <tr><td>1821 S Viewcrest Ln</td><td>$550K</td><td>$158</td></tr>
+    <tr class="row-purple"><td><strong>7525 N Excell Dr — Go Big</strong></td><td>$420K+reno</td><td>—</td></tr>
+  </table></div>
+  <div class="footer-space"></div>
+</div>
+
+<!-- ═══ TOP PICKS ═══ -->
+<div class="section" id="section-listings">
+  <div class="alert alert-amber">
+    <span class="alert-icon">&#9888;</span>
+    <span>Confirm all listings are still active with Haydn before scheduling showings.</span>
+  </div>
+
+  <div class="card" id="card-fleming">
+    <div class="card-photo" id="photo-fleming">
+      <img src="https://photos.zillowstatic.com/fp/d63c038dbd4270273c4fd3a7f41ef2ec-cc_ft_1536.jpg" alt="5907 N Fleming St, Spokane WA 99205" loading="lazy">
+      <button class="photo-toggle" onclick="toggleOnePhoto('fleming')">Hide</button>
+    </div>
+    <div class="card-bar bar-amber">
+      <span class="card-rank amber">Priority #1</span>
+      <div class="tag-row"><span class="tag tag-amber">Jon's Top Pick</span><span class="tag tag-slate">77 Zillow Saves</span></div>
+    </div>
+    <div class="both-banner" id="both-fleming">Both of you want to see this one.</div>
+    <div class="card-main">
+      <div class="card-price-row">
+        <div class="card-price">$490,000</div>
+      </div>
+      <div class="card-addr">5907 N Fleming St, Spokane WA 99205</div>
+      <div class="why-label">Why This Property</div>
+      <div class="why-title">The best-value ranch on the list, already done — and others know it.</div>
+      <div class="why-body">A 1963 single-level ranch on a quiet north Spokane street with territorial views and a fully finished basement. At $163/sqft it is the second-best value per square foot of any city listing, yet the house is move-in ready. 77 Zillow saves in two weeks signals high buyer interest — this is not a house to approach casually. Annual property tax of $283 is among the lowest you'll find. Five bedrooms and three bathrooms confirmed across main floor and basement: no renovation required to get the layout right. This mirrors the St. Louis playbook exactly.</div>
+      <div class="highlights">
+        <div class="hl"><div class="hl-label">Location</div><div class="hl-value good">North Spokane</div></div>
+        <div class="hl"><div class="hl-label">View</div><div class="hl-value good">Territorial views</div></div>
+        <div class="hl"><div class="hl-label">$/sqft</div><div class="hl-value good">$163 — 2nd best value</div></div>
+        <div class="hl"><div class="hl-label">Tax/yr</div><div class="hl-value good">$283 — unusually low</div></div>
+      </div>
+      <div class="specs-strip">
+        <div class="spec"><div class="spec-v">5</div><div class="spec-l">Beds</div></div>
+        <div class="spec"><div class="spec-v">3</div><div class="spec-l">Baths</div></div>
+        <div class="spec"><div class="spec-v">3,002</div><div class="spec-l">Sq ft</div></div>
+        <div class="spec"><div class="spec-v">$163</div><div class="spec-l">Per sqft</div></div>
+      </div>
+    </div>
+    <div class="card-foot">
+      <a class="btn btn-amber" href="https://www.zillow.com/homedetails/5907-N-Fleming-St-Spokane-WA-99205/23493236_zpid/" target="_blank">View on Zillow</a>
+      <a class="btn btn-outline" href="https://www.redfin.com/WA/Spokane/5907-N-Fleming-St-99205" target="_blank">Redfin</a>
+    </div>
+    <div class="vote-row">
+      <button class="vbtn vbtn-jon" id="jon-fleming" onclick="vote('fleming','jon')">Jon's Favorite</button>
+      <button class="vbtn vbtn-sarah" id="sarah-fleming" onclick="vote('fleming','sarah')">Sarah's Favorite</button>
+    </div>
+  </div>
+  <div class="card" id="card-lowell">
+    <div class="card-photo" id="photo-lowell">
+      <img src="https://photos.zillowstatic.com/fp/6dba4d7bed0c1b8819d1858e415c897f-cc_ft_1536.jpg" alt="5609 W Lowell Ave, Spokane WA 99208" loading="lazy">
+      <button class="photo-toggle" onclick="toggleOnePhoto('lowell')">Hide</button>
+    </div>
+    <div class="card-bar bar-amber">
+      <span class="card-rank amber">Priority #2</span>
+      <div class="tag-row"><span class="tag tag-amber">Best Neighborhood</span><span class="tag tag-green">Price Reduced</span></div>
+    </div>
+    <div class="both-banner" id="both-lowell">Both of you want to see this one.</div>
+    <div class="card-main">
+      <div class="card-price-row">
+        <div class="card-price">$545,000</div><span class="card-price-note">Price Reduced</span>
+      </div>
+      <div class="card-addr">5609 W Lowell Ave, Spokane WA 99208</div>
+      <div class="why-label">Why This Property</div>
+      <div class="why-title">Best neighborhood in Spokane, motivated seller, and the street name you want on a resale listing.</div>
+      <div class="why-body">The 99208 zip code — Audubon/Five Mile Prairie — is where Spokane's appreciation story is most consistent. Pacific Park puts you within walking distance of coffee shops, restaurants, and Audubon Park. A price reduction in this zip is unusual and signals real negotiating leverage. The resale pool here is the deepest of any Spokane neighborhood: professional families, WSU faculty, and remote workers compete for homes in 99208, making your 4–5 year exit the most predictable of any listing on this list.</div>
+      <div class="highlights">
+        <div class="hl"><div class="hl-label">Location</div><div class="hl-value good">Audubon/Five Mile (99208)</div></div>
+        <div class="hl"><div class="hl-label">Resale</div><div class="hl-value good">Strongest zip in Spokane</div></div>
+        <div class="hl"><div class="hl-label">Walkability</div><div class="hl-value good">Pacific Park area</div></div>
+        <div class="hl"><div class="hl-label">Leverage</div><div class="hl-value good">Price reduced — negotiate</div></div>
+      </div>
+      <div class="specs-strip">
+        <div class="spec"><div class="spec-v">4</div><div class="spec-l">Beds</div></div>
+        <div class="spec"><div class="spec-v">3</div><div class="spec-l">Baths</div></div>
+        <div class="spec"><div class="spec-v">2,983</div><div class="spec-l">Sq ft</div></div>
+        <div class="spec"><div class="spec-v">$183</div><div class="spec-l">Per sqft</div></div>
+      </div>
+    </div>
+    <div class="card-foot">
+      <a class="btn btn-dark" href="https://www.zillow.com/homedetails/5609-W-Lowell-Ave-Spokane-WA-99208/23489084_zpid/" target="_blank">View on Zillow</a>
+      <a class="btn btn-outline" href="https://www.redfin.com/WA/Spokane/5609-W-Lowell-Ave-99208" target="_blank">Redfin</a>
+    </div>
+    <div class="vote-row">
+      <button class="vbtn vbtn-jon" id="jon-lowell" onclick="vote('lowell','jon')">Jon's Favorite</button>
+      <button class="vbtn vbtn-sarah" id="sarah-lowell" onclick="vote('lowell','sarah')">Sarah's Favorite</button>
+    </div>
+  </div>
+  <div class="card" id="card-canyon">
+    <div class="card-photo" id="photo-canyon">
+      <img src="https://photos.zillowstatic.com/fp/eb678bad50b5ebf46438fe2cd1ae0153-cc_ft_1536.jpg" alt="1907 S Canyon Woods Ln, Spokane WA 99224" loading="lazy">
+      <button class="photo-toggle" onclick="toggleOnePhoto('canyon')">Hide</button>
+    </div>
+    <div class="card-bar ">
+      <span class="card-rank ">#3</span>
+      <div class="tag-row"><span class="tag tag-blue">South Hill</span><span class="tag tag-green">Price Reduced</span></div>
+    </div>
+    <div class="both-banner" id="both-canyon">Both of you want to see this one.</div>
+    <div class="card-main">
+      <div class="card-price-row">
+        <div class="card-price">$519,000</div><span class="card-price-note">Price Reduced</span>
+      </div>
+      <div class="card-addr">1907 S Canyon Woods Ln, Spokane WA 99224</div>
+      <div class="why-label">Why This Property</div>
+      <div class="why-title">South Hill address with direct WSU Pullman access — a practical choice if the campus connection matters.</div>
+      <div class="why-body">South Hill 99224 gives you the elevated topography and ponderosa pine landscape that defines Spokane's most scenic residential corridors. Canyon Woods implies a wooded, cul-de-sac style setting — privacy and minimal street traffic. Highway 195 access makes the WSU Pullman commute approximately 70 minutes. Price reduction gives you an opening position below ask. Confirm ranch/basement layout with Haydn before scheduling.</div>
+      <div class="highlights">
+        <div class="hl"><div class="hl-label">Location</div><div class="hl-value ">South Hill — 99224</div></div>
+        <div class="hl"><div class="hl-label">Access</div><div class="hl-value good">Hwy 195 → WSU (~70 min)</div></div>
+        <div class="hl"><div class="hl-label">Setting</div><div class="hl-value good">Wooded, low-traffic street</div></div>
+        <div class="hl"><div class="hl-label">Leverage</div><div class="hl-value good">Price reduced</div></div>
+      </div>
+      <div class="specs-strip">
+        <div class="spec"><div class="spec-v">4</div><div class="spec-l">Beds</div></div>
+        <div class="spec"><div class="spec-v">3</div><div class="spec-l">Baths</div></div>
+        <div class="spec"><div class="spec-v">2,708</div><div class="spec-l">Sq ft</div></div>
+        <div class="spec"><div class="spec-v">$191</div><div class="spec-l">Per sqft</div></div>
+      </div>
+    </div>
+    <div class="card-foot">
+      <a class="btn btn-dark" href="https://www.zillow.com/homedetails/1907-S-Canyon-Woods-Ln-Spokane-WA-99224/97810523_zpid/" target="_blank">View on Zillow</a>
+      <a class="btn btn-outline" href="https://www.redfin.com/WA/Spokane/1907-S-Canyon-Woods-Ln-99224" target="_blank">Redfin</a>
+    </div>
+    <div class="vote-row">
+      <button class="vbtn vbtn-jon" id="jon-canyon" onclick="vote('canyon','jon')">Jon's Favorite</button>
+      <button class="vbtn vbtn-sarah" id="sarah-canyon" onclick="vote('canyon','sarah')">Sarah's Favorite</button>
+    </div>
+  </div>
+  <div class="card" id="card-viewcrest">
+    <div class="card-photo" id="photo-viewcrest">
+      <img src="https://photos.zillowstatic.com/fp/83dfa0d34bf5b9ae5e50b83024fa4913-cc_ft_1536.jpg" alt="1821 S Viewcrest Ln, Spokane WA 99212" loading="lazy">
+      <button class="photo-toggle" onclick="toggleOnePhoto('viewcrest')">Hide</button>
+    </div>
+    <div class="card-bar ">
+      <span class="card-rank ">#4</span>
+      <div class="tag-row"><span class="tag tag-blue">South Hill</span><span class="tag tag-green">Largest Home</span></div>
+    </div>
+    <div class="both-banner" id="both-viewcrest">Both of you want to see this one.</div>
+    <div class="card-main">
+      <div class="card-price-row">
+        <div class="card-price">$550,000</div>
+      </div>
+      <div class="card-addr">1821 S Viewcrest Ln, Spokane WA 99212</div>
+      <div class="why-label">Why This Property</div>
+      <div class="why-title">Largest home on the city list — and the lowest cost-per-square-foot of any property over $500K.</div>
+      <div class="why-body">At 3,480 sqft and $158/sqft, this is the most space for the money of any city listing. The Viewcrest address is intentional — South Hill properties along this corridor sit on elevated terrain overlooking the Spokane Valley. A confirmed view from this lot adds lifestyle value that doesn't appear in a spreadsheet. South Hill 99212 has steady professional buyer demand. Confirm the view and floor plan on the showing.</div>
+      <div class="highlights">
+        <div class="hl"><div class="hl-label">Size</div><div class="hl-value good">3,480 sqft — largest on list</div></div>
+        <div class="hl"><div class="hl-label">Value</div><div class="hl-value good">$158/sqft — best on list</div></div>
+        <div class="hl"><div class="hl-label">View</div><div class="hl-value ">South Hill territorial view (confirm)</div></div>
+        <div class="hl"><div class="hl-label">Location</div><div class="hl-value ">South Hill — 99212</div></div>
+      </div>
+      <div class="specs-strip">
+        <div class="spec"><div class="spec-v">4</div><div class="spec-l">Beds</div></div>
+        <div class="spec"><div class="spec-v">3</div><div class="spec-l">Baths</div></div>
+        <div class="spec"><div class="spec-v">3,480</div><div class="spec-l">Sq ft</div></div>
+        <div class="spec"><div class="spec-v">$158</div><div class="spec-l">Per sqft</div></div>
+      </div>
+    </div>
+    <div class="card-foot">
+      <a class="btn btn-dark" href="https://www.zillow.com/homedetails/1821-S-Viewcrest-Ln-Spokane-WA-99212/60969337_zpid/" target="_blank">View on Zillow</a>
+      <a class="btn btn-outline" href="https://www.redfin.com/WA/Spokane/1821-S-Viewcrest-Ln-99212" target="_blank">Redfin</a>
+    </div>
+    <div class="vote-row">
+      <button class="vbtn vbtn-jon" id="jon-viewcrest" onclick="vote('viewcrest','jon')">Jon's Favorite</button>
+      <button class="vbtn vbtn-sarah" id="sarah-viewcrest" onclick="vote('viewcrest','sarah')">Sarah's Favorite</button>
+    </div>
+  </div>
+  <div class="card" id="card-dearborn">
+    <div class="card-photo" id="photo-dearborn">
+      <img src="https://photos.zillowstatic.com/fp/532a5387c7415a21bc6fcbbe61ac5a70-cc_ft_1536.jpg" alt="5207 S Dearborn Dr, Spokane WA 99223" loading="lazy">
+      <button class="photo-toggle" onclick="toggleOnePhoto('dearborn')">Hide</button>
+    </div>
+    <div class="card-bar ">
+      <span class="card-rank ">#5</span>
+      <div class="tag-row"><span class="tag tag-blue">South Hill</span><span class="tag tag-green">Reno Upside</span></div>
+    </div>
+    <div class="both-banner" id="both-dearborn">Both of you want to see this one.</div>
+    <div class="card-main">
+      <div class="card-price-row">
+        <div class="card-price">$525,000</div>
+      </div>
+      <div class="card-addr">5207 S Dearborn Dr, Spokane WA 99223</div>
+      <div class="why-label">Why This Property</div>
+      <div class="why-title">Renovation upside built in — the basement is partially started and the lot is already South Hill.</div>
+      <div class="why-body">This is the St. Louis playbook: 3+2 bedrooms with two non-conforming basement rooms already in use, and a third bathroom that may be complete or rough-in. Ask Haydn: finished 3rd bath or rough-in only? The answer changes your renovation budget by $15–20K. South Hill 99223 is a proven address. At $160/sqft on 3,276 sqft, you're buying the most room to add finished square footage of any listing — and in Spokane, finished basement space converts at a strong appraisal ratio.</div>
+      <div class="highlights">
+        <div class="hl"><div class="hl-label">Location</div><div class="hl-value good">South Hill — 99223</div></div>
+        <div class="hl"><div class="hl-label">Potential</div><div class="hl-value good">Basement started — add 3rd BA</div></div>
+        <div class="hl"><div class="hl-label">Size</div><div class="hl-value ">3,276 sqft</div></div>
+        <div class="hl"><div class="hl-label">Value</div><div class="hl-value good">$160/sqft with reno upside</div></div>
+      </div>
+      <div class="specs-strip">
+        <div class="spec"><div class="spec-v">3+2</div><div class="spec-l">Beds</div></div>
+        <div class="spec"><div class="spec-v">3</div><div class="spec-l">Baths</div></div>
+        <div class="spec"><div class="spec-v">3,276</div><div class="spec-l">Sq ft</div></div>
+        <div class="spec"><div class="spec-v">$160</div><div class="spec-l">Per sqft</div></div>
+      </div>
+    </div>
+    <div class="card-foot">
+      <a class="btn btn-dark" href="https://www.zillow.com/homedetails/5207-S-Dearborn-Dr-Spokane-WA-99223/23500424_zpid/" target="_blank">View on Zillow</a>
+      <a class="btn btn-outline" href="https://www.redfin.com/WA/Spokane/5207-S-Dearborn-Dr-99223" target="_blank">Redfin</a>
+    </div>
+    <div class="vote-row">
+      <button class="vbtn vbtn-jon" id="jon-dearborn" onclick="vote('dearborn','jon')">Jon's Favorite</button>
+      <button class="vbtn vbtn-sarah" id="sarah-dearborn" onclick="vote('dearborn','sarah')">Sarah's Favorite</button>
+    </div>
+  </div>
+  <div class="card" id="card-e43rd">
+    <div class="card-photo" id="photo-e43rd">
+      <img src="https://photos.zillowstatic.com/fp/657fd04a2a8db49dad9ea6d0097b1297-cc_ft_1536.jpg" alt="3211 E 43rd Ave, Spokane WA 99223" loading="lazy">
+      <button class="photo-toggle" onclick="toggleOnePhoto('e43rd')">Hide</button>
+    </div>
+    <div class="card-bar ">
+      <span class="card-rank ">#6</span>
+      <div class="tag-row"><span class="tag tag-blue">South Hill</span><span class="tag tag-green">Price Reduced</span></div>
+    </div>
+    <div class="both-banner" id="both-e43rd">Both of you want to see this one.</div>
+    <div class="card-main">
+      <div class="card-price-row">
+        <div class="card-price">$540,000</div><span class="card-price-note">Price Reduced</span>
+      </div>
+      <div class="card-addr">3211 E 43rd Ave, Spokane WA 99223</div>
+      <div class="why-label">Why This Property</div>
+      <div class="why-title">South Hill with a price reduction, but the highest $/sqft on the list — negotiate hard.</div>
+      <div class="why-body">South Hill 99223 is a strong address and the price reduction signals motivation. The concern: $206/sqft is the highest cost-per-square-foot on the list. That's not disqualifying, but any offer should come in well below ask. If the floor plan and lot are strong, a negotiating target of $510–520K changes the math considerably. Confirm ranch/basement and walk the lot before making a judgment.</div>
+      <div class="highlights">
+        <div class="hl"><div class="hl-label">Location</div><div class="hl-value good">South Hill — 99223</div></div>
+        <div class="hl"><div class="hl-label">Leverage</div><div class="hl-value good">Price reduced + negotiate</div></div>
+        <div class="hl"><div class="hl-label">Note</div><div class="hl-value warn">$206/sqft — highest on list</div></div>
+        <div class="hl"><div class="hl-label">Target</div><div class="hl-value ">Offer at $510–520K</div></div>
+      </div>
+      <div class="specs-strip">
+        <div class="spec"><div class="spec-v">4</div><div class="spec-l">Beds</div></div>
+        <div class="spec"><div class="spec-v">3</div><div class="spec-l">Baths</div></div>
+        <div class="spec"><div class="spec-v">2,628</div><div class="spec-l">Sq ft</div></div>
+        <div class="spec"><div class="spec-v">$206</div><div class="spec-l">Per sqft</div></div>
+      </div>
+    </div>
+    <div class="card-foot">
+      <a class="btn btn-dark" href="https://www.zillow.com/homedetails/3211-E-43rd-Ave-Spokane-WA-99223/23539824_zpid/" target="_blank">View on Zillow</a>
+      <a class="btn btn-outline" href="https://www.redfin.com/WA/Spokane/3211-E-43rd-Ave-99223" target="_blank">Redfin</a>
+    </div>
+    <div class="vote-row">
+      <button class="vbtn vbtn-jon" id="jon-e43rd" onclick="vote('e43rd','jon')">Jon's Favorite</button>
+      <button class="vbtn vbtn-sarah" id="sarah-e43rd" onclick="vote('e43rd','sarah')">Sarah's Favorite</button>
+    </div>
+  </div>
+  <div class="footer-space"></div>
+</div>
+
+<!-- ═══ GO BIG ═══ -->
+<div class="section" id="section-gobig">
+  <div class="gobig-hero">
+    <div class="hero-eyebrow">Alternative Scenario</div>
+    <div class="hero-title">The "Go Big" Play</div>
+    <div class="hero-sub">Higher entry cost. Higher ceiling. Best downside protection in Spokane's most liquid zip. Makes the most sense as a 10-year hold.</div>
+  </div>
+
+  <div class="card" id="card-excell">
+    <div class="card-photo" id="photo-excell">
+      <img src="https://photos.zillowstatic.com/fp/183ec662a29980c39b4525b60ea1f6a5-cc_ft_1536.jpg" alt="7525 N Excell Dr, Spokane WA 99208" loading="lazy">
+      <button class="photo-toggle" onclick="toggleOnePhoto('excell')">Hide</button>
+    </div>
+    <div class="card-bar bar-purple">
+      <span class="card-rank purple">Go Big — Excell</span>
+      <div class="tag-row"><span class="tag tag-purple">Audubon 99208</span><span class="tag tag-green">Max Upside</span></div>
+    </div>
+    <div class="both-banner" id="both-excell">Both of you want to see this one.</div>
+    <div class="card-main">
+      <div class="card-price-row">
+        <div class="card-price">$420,000</div><span class="card-price-note">List Price*</span>
+      </div>
+      <div class="card-addr">7525 N Excell Dr, Spokane WA 99208</div>
+      <div class="why-label">Why This Property</div>
+      <div class="why-title">Audubon address at below-market entry — comprehensive renovation turns it into the most defensible asset on the list.</div>
+      <div class="why-body">This property sits in 99208 (Audubon/Five Mile) — Spokane's strongest resale zip — at a list price $75–125K below comparable turnkey homes on the same streets. The thesis: buy the worst house on the best block, invest $160–200K in full renovation (finished basement, 3rd bath, updated kitchen and baths, new flooring), and emerge with a custom home at below-replacement cost in a zip that sells even in down markets. Finished product would be priced $700–750K against comparable turnkey sales.<br><br><strong>The caution:</strong> at $610K all-in, you need a $760K+ sale to clear transaction costs on a 5-year exit. This is a 10-year hold or a home you'd genuinely want to stay in. If either of you walks in and it feels like the place, the calculus changes entirely.<br><br><em>*Price from April 2026 Zillow alert. Confirm with Haydn — may be sold or relisted.</em></div>
+      <div class="highlights">
+        <div class="hl"><div class="hl-label">Location</div><div class="hl-value good">Audubon 99208 — best zip</div></div>
+        <div class="hl"><div class="hl-label">Entry</div><div class="hl-value good">$420K vs. $545K+ turnkey comps</div></div>
+        <div class="hl"><div class="hl-label">All-In</div><div class="hl-value warn">~$580–620K after renovation</div></div>
+        <div class="hl"><div class="hl-label">Best as</div><div class="hl-value warn">10-year hold or forever home</div></div>
+      </div>
+      <div class="specs-strip">
+        <div class="spec"><div class="spec-v">4</div><div class="spec-l">Beds</div></div>
+        <div class="spec"><div class="spec-v">2</div><div class="spec-l">Baths</div></div>
+        <div class="spec"><div class="spec-v">2,036</div><div class="spec-l">Sq ft</div></div>
+        <div class="spec"><div class="spec-v">$206</div><div class="spec-l">Per sqft</div></div>
+      </div>
+    </div>
+    <div class="card-foot">
+      <a class="btn btn-purple" href="https://www.zillow.com/homedetails/7525-N-Excell-Dr-Spokane-WA-99208/23548873_zpid/" target="_blank">View on Zillow</a>
+      <a class="btn btn-outline" href="https://www.redfin.com/WA/Spokane/7525-N-Excell-Dr-99208" target="_blank">Redfin</a>
+    </div>
+    <div class="vote-row">
+      <button class="vbtn vbtn-jon" id="jon-excell" onclick="vote('excell','jon')">Jon's Favorite</button>
+      <button class="vbtn vbtn-sarah" id="sarah-excell" onclick="vote('excell','sarah')">Sarah's Favorite</button>
+    </div>
+  </div>
+  <div class="sh">Standard vs. Go Big — Monthly Cost</div>
+  <div class="pay-grid">
+    <div class="pay-col standard">
+      <div class="pay-tag">Standard Plan</div>
+      <div class="pay-amount standard">$2,134</div>
+      <div class="pay-desc">Est. PITI/mo<br>$500K purchase, $250K down, 6.49%</div>
+    </div>
+    <div class="pay-col gobig">
+      <div class="pay-tag">Go Big (Excell)</div>
+      <div class="pay-amount gobig">~$2,900</div>
+      <div class="pay-desc">Est. PITI/mo<br>$600K all-in, $150K down, 6.49%</div>
+    </div>
+  </div>
+  <p style="font-size:12px;color:var(--text-2);margin-bottom:20px;">Monthly delta: ~$766 more. Justified only at 10-year hold.</p>
+  <div class="footer-space"></div>
+</div>
+
+<!-- ═══ VALLEY ═══ -->
+<div class="section" id="section-valley">
+  <div class="hero">
+    <div class="hero-eyebrow">Comparison Properties</div>
+    <div class="hero-title">Spokane Valley</div>
+    <div class="hero-sub">Tour these to feel the price-per-square-foot difference and commute. Valley homes skew larger and cheaper — but appreciation and internet options are weaker.</div>
+  </div>
+
+  <div class="card" id="card-bolivar">
+    <div class="card-photo" id="photo-bolivar">
+      <img src="https://photos.zillowstatic.com/fp/9e5f01d32b510fe5d9ebd602f1f73225-cc_ft_1536.jpg" alt="2524 S Bolivar Ct, Spokane Valley WA 99037" loading="lazy">
+      <button class="photo-toggle" onclick="toggleOnePhoto('bolivar')">Hide</button>
+    </div>
+    <div class="card-bar ">
+      <span class="card-rank ">Valley Comp #1</span>
+      <div class="tag-row"><span class="tag tag-slate">Spokane Valley</span></div>
+    </div>
+    <div class="both-banner" id="both-bolivar">Both of you want to see this one.</div>
+    <div class="card-main">
+      <div class="card-price-row">
+        <div class="card-price">$520,000</div>
+      </div>
+      <div class="card-addr">2524 S Bolivar Ct, Spokane Valley WA 99037</div>
+      <div class="why-label">Why This Property</div>
+      <div class="why-title">Cul-de-sac setting with 3,100+ sqft — but confirm fiber internet before getting attached.</div>
+      <div class="why-body">Cul-de-sac location means minimal through traffic and typically more lot space. 3,102 sqft at $168/sqft is solid value and the south Spokane Valley position keeps the I-90 commute manageable. Caveat: Valley internet is cable-dominant and fiber availability varies block by block. Verify fiber before this goes on your shortlist.</div>
+      <div class="highlights">
+        <div class="hl"><div class="hl-label">Setting</div><div class="hl-value good">Cul-de-sac — private</div></div>
+        <div class="hl"><div class="hl-label">Size</div><div class="hl-value good">3,102 sqft at $168/sqft</div></div>
+        <div class="hl"><div class="hl-label">Internet</div><div class="hl-value warn">Confirm fiber per address</div></div>
+        <div class="hl"><div class="hl-label">Commute</div><div class="hl-value ">~15 min east of downtown</div></div>
+      </div>
+      <div class="specs-strip">
+        <div class="spec"><div class="spec-v">4</div><div class="spec-l">Beds</div></div>
+        <div class="spec"><div class="spec-v">3</div><div class="spec-l">Baths</div></div>
+        <div class="spec"><div class="spec-v">3,102</div><div class="spec-l">Sq ft</div></div>
+        <div class="spec"><div class="spec-v">$168</div><div class="spec-l">Per sqft</div></div>
+      </div>
+    </div>
+    <div class="card-foot">
+      <a class="btn btn-dark" href="https://www.zillow.com/homedetails/2524-S-Bolivar-Ct-Veradale-WA-99037/23580838_zpid/" target="_blank">View on Zillow</a>
+      <a class="btn btn-outline" href="https://www.redfin.com/WA/Spokane-Valley/2524-S-Bolivar-Ct-99037" target="_blank">Redfin</a>
+    </div>
+    <div class="vote-row">
+      <button class="vbtn vbtn-jon" id="jon-bolivar" onclick="vote('bolivar','jon')">Jon's Favorite</button>
+      <button class="vbtn vbtn-sarah" id="sarah-bolivar" onclick="vote('bolivar','sarah')">Sarah's Favorite</button>
+    </div>
+  </div>
+  <div class="card" id="card-e35th">
+    <div class="card-photo" id="photo-e35th">
+      <img src="https://photos.zillowstatic.com/fp/cb13b0be38710ba893653c7bf16909e5-cc_ft_1536.jpg" alt="10810 E 35th Ave, Spokane Valley WA 99206" loading="lazy">
+      <button class="photo-toggle" onclick="toggleOnePhoto('e35th')">Hide</button>
+    </div>
+    <div class="card-bar ">
+      <span class="card-rank ">Valley Comp #2</span>
+      <div class="tag-row"><span class="tag tag-slate">Spokane Valley</span><span class="tag tag-green">Best $/Sqft</span><span class="tag tag-green">Price Reduced</span></div>
+    </div>
+    <div class="both-banner" id="both-e35th">Both of you want to see this one.</div>
+    <div class="card-main">
+      <div class="card-price-row">
+        <div class="card-price">$535,000</div><span class="card-price-note">Price Reduced</span>
+      </div>
+      <div class="card-addr">10810 E 35th Ave, Spokane Valley WA 99206</div>
+      <div class="why-label">Why This Property</div>
+      <div class="why-title">The most square footage per dollar on the entire list — 3,542 sqft at $151/sqft.</div>
+      <div class="why-body">Best cost-per-square-foot of any property in this guide at $151/sqft. Near Mirabeau Point Park with trail access. Price reduction adds negotiating leverage. The tradeoff: Valley appreciation runs 1–2% annually vs. 3–4% in Audubon. Over a 4–5 year hold, that gap is meaningful. Tour this to calibrate what the extra square footage feels like against the neighborhood difference.</div>
+      <div class="highlights">
+        <div class="hl"><div class="hl-label">Value</div><div class="hl-value good">$151/sqft — best on entire list</div></div>
+        <div class="hl"><div class="hl-label">Size</div><div class="hl-value good">3,542 sqft — largest home</div></div>
+        <div class="hl"><div class="hl-label">Appreciation</div><div class="hl-value warn">Lower than city 99208</div></div>
+        <div class="hl"><div class="hl-label">Internet</div><div class="hl-value warn">Confirm fiber per address</div></div>
+      </div>
+      <div class="specs-strip">
+        <div class="spec"><div class="spec-v">4</div><div class="spec-l">Beds</div></div>
+        <div class="spec"><div class="spec-v">3</div><div class="spec-l">Baths</div></div>
+        <div class="spec"><div class="spec-v">3,542</div><div class="spec-l">Sq ft</div></div>
+        <div class="spec"><div class="spec-v">$151</div><div class="spec-l">Per sqft</div></div>
+      </div>
+    </div>
+    <div class="card-foot">
+      <a class="btn btn-dark" href="https://www.zillow.com/homedetails/10810-E-35th-Ave-Spokane-WA-99206/23585366_zpid/" target="_blank">View on Zillow</a>
+      <a class="btn btn-outline" href="https://www.redfin.com/WA/Spokane-Valley/10810-E-35th-Ave-99206" target="_blank">Redfin</a>
+    </div>
+    <div class="vote-row">
+      <button class="vbtn vbtn-jon" id="jon-e35th" onclick="vote('e35th','jon')">Jon's Favorite</button>
+      <button class="vbtn vbtn-sarah" id="sarah-e35th" onclick="vote('e35th','sarah')">Sarah's Favorite</button>
+    </div>
+  </div>
+  <div class="sh">City vs. Valley</div>
+  <div class="tbl-wrap"><table class="tbl">
+    <tr><th></th><th>Spokane City</th><th>Valley</th></tr>
+    <tr><td>Appreciation</td><td>3–4%/yr (Audubon)</td><td>1–2%/yr</td></tr>
+    <tr><td>Internet</td><td>Ziply Fiber available</td><td>Cable — check per address</td></tr>
+    <tr><td>Ranch stock</td><td>Strong 1960s–70s base</td><td>Mixed</td></tr>
+    <tr><td>Verdict</td><td>Primary target</td><td>Tour for calibration</td></tr>
+  </table></div>
+  <div class="footer-space"></div>
+</div>
+
+<!-- ═══ ACREAGE ═══ -->
+<div class="section" id="section-acreage">
+  <div class="hero">
+    <div class="hero-eyebrow">Alternate Path</div>
+    <div class="hero-title">Hobby Farm / Acreage</div>
+    <div class="hero-sub">Real options on the market now — 3 to 12 acres within ~15–40 min of Spokane, all in the $520K–$675K range. Sourced June 14, 2026. Vote on these like the city picks; favorites flow to the Overview shortlist.</div>
+  </div>
+
+  <div class="alert alert-amber">
+    <span class="alert-icon">&#9888;</span>
+    <span><strong>Read the bath count.</strong> The two SW Spokane (99224) homes already have 3 full baths. The Chattaroy/Deer Park farms are 3BD/2BA — big houses with obvious room to add a 3rd bath, but confirm the path with Haydn. Rural internet varies by exact address — verify before any goes on the shortlist.</span>
+  </div>
+
+  <div class="sh">Compare at a Glance</div>
+  <div class="tbl-wrap"><table class="tbl">
+    <tr><th>Property</th><th>Price</th><th>Acres</th><th>BD/BA</th><th>Sqft</th><th>Drive</th></tr>
+    <tr class="row-amber"><td><strong>3517 W Washington</strong> · 99224</td><td>$520K</td><td>9.77</td><td>4/3</td><td>1,906</td><td>~15 min</td></tr>
+    <tr class="row-amber"><td><strong>727 S Basalt</strong> · 99224</td><td>$600K</td><td>3.16</td><td>4/3</td><td>3,214</td><td>~15 min</td></tr>
+    <tr><td>27601 N Scotts Ridge · Chattaroy</td><td>$595K</td><td>12.5</td><td>3/2</td><td>2,194</td><td>~30 min</td></tr>
+    <tr><td>10420 E Dunn · Chattaroy</td><td>$625K</td><td>10</td><td>3/2</td><td>2,640</td><td>~30 min</td></tr>
+    <tr><td>1020 W Owens · Deer Park</td><td>$639K</td><td>9.1</td><td>3/2</td><td>2,300</td><td>~35 min</td></tr>
+    <tr><td>28310 N Short · Deer Park</td><td>$675K</td><td>5</td><td>4/2.5</td><td>3,300</td><td>~38 min</td></tr>
+  </table></div>
+  <p style="font-size:12px;color:var(--text-2);margin-bottom:8px;">Amber rows already meet the 3-bath requirement and sit closest to the airport.</p>
+
+  <!-- WASHINGTON -->
+  <div class="card" id="card-washington">
+    <div class="card-bar bar-amber">
+      <span class="card-rank amber">Best Fit — Acreage</span>
+      <div class="tag-row"><span class="tag tag-green">3 Full Baths</span><span class="tag tag-amber">Best Value</span></div>
+    </div>
+    <div class="both-banner" id="both-washington">Both of you want to see this one.</div>
+    <div class="card-main">
+      <div class="card-price-row"><div class="card-price">$520,000</div></div>
+      <div class="card-addr">3517 W Washington Rd, Spokane WA 99224</div>
+      <div class="why-label">Why This Property</div>
+      <div class="why-title">Best value that already meets every requirement — nearly 10 acres at $520K, close to the airport.</div>
+      <div class="why-body">The standout on paper: 4 bedrooms, 3 full baths on 9.77 acres in SW Spokane (99224), roughly 15 minutes from Spokane International. Lowest price of the group, the most land of any close-in option, and no 3rd-bath project to budget. The catch is house size — 1,906 sqft — so the value is likely in the land. Verify layout, condition, and well/septic on the showing. If it shows well, this is the one to beat.</div>
+      <div class="highlights">
+        <div class="hl"><div class="hl-label">Requirements</div><div class="hl-value good">4/3 — all hard criteria met</div></div>
+        <div class="hl"><div class="hl-label">Land</div><div class="hl-value good">9.77 acres — most close-in</div></div>
+        <div class="hl"><div class="hl-label">Airport</div><div class="hl-value good">~15 min to GEG</div></div>
+        <div class="hl"><div class="hl-label">Watch</div><div class="hl-value warn">1,906 sqft — confirm condition</div></div>
+      </div>
+      <div class="specs-strip">
+        <div class="spec"><div class="spec-v">4</div><div class="spec-l">Beds</div></div>
+        <div class="spec"><div class="spec-v">3</div><div class="spec-l">Baths</div></div>
+        <div class="spec"><div class="spec-v">9.77</div><div class="spec-l">Acres</div></div>
+        <div class="spec"><div class="spec-v">1,906</div><div class="spec-l">Sq ft</div></div>
+      </div>
+    </div>
+    <div class="card-foot">
+      <a class="btn btn-amber" href="https://www.landsearch.com/properties/3517-w-washington-rd-spokane-wa-99224/5237941" target="_blank">View Listing</a>
+      <a class="btn btn-outline" href="https://www.zillow.com/homes/3517-W-Washington-Rd-Spokane-WA-99224_rb/" target="_blank">Zillow</a>
+    </div>
+    <div class="vote-row">
+      <button class="vbtn vbtn-jon" id="jon-washington" onclick="vote('washington','jon')">Jon's Favorite</button>
+      <button class="vbtn vbtn-sarah" id="sarah-washington" onclick="vote('washington','sarah')">Sarah's Favorite</button>
+    </div>
+  </div>
+
+  <!-- BASALT -->
+  <div class="card" id="card-basalt">
+    <div class="card-bar bar-amber">
+      <span class="card-rank amber">Most Move-In Ready</span>
+      <div class="tag-row"><span class="tag tag-green">3 Full Baths</span><span class="tag tag-blue">Closest In</span></div>
+    </div>
+    <div class="both-banner" id="both-basalt">Both of you want to see this one.</div>
+    <div class="card-main">
+      <div class="card-price-row"><div class="card-price">$600,000</div></div>
+      <div class="card-addr">727 S Basalt Rd, Spokane WA 99224</div>
+      <div class="why-label">Why This Property</div>
+      <div class="why-title">The closest-in option — 3 full baths already, 3,200+ sqft, 15 minutes from the airport.</div>
+      <div class="why-body">More acreage-home than working farm, but it checks the hard requirements outright: 4 bedrooms, 3 full baths, 3,214 sqft on 3.16 acres in 99224. No 3rd-bath project, the shortest commute of the rural group, and the most likely to have solid internet given how close in it sits. Less land than the Deer Park and Chattaroy farms — better if you want elbow room and a big house without a true ranch's upkeep.</div>
+      <div class="highlights">
+        <div class="hl"><div class="hl-label">Requirements</div><div class="hl-value good">4/3 — all met, big house</div></div>
+        <div class="hl"><div class="hl-label">Size</div><div class="hl-value good">3,214 sqft</div></div>
+        <div class="hl"><div class="hl-label">Airport</div><div class="hl-value good">~15 min to GEG</div></div>
+        <div class="hl"><div class="hl-label">Trade-off</div><div class="hl-value warn">3.16 acres — smallest farm</div></div>
+      </div>
+      <div class="specs-strip">
+        <div class="spec"><div class="spec-v">4</div><div class="spec-l">Beds</div></div>
+        <div class="spec"><div class="spec-v">3</div><div class="spec-l">Baths</div></div>
+        <div class="spec"><div class="spec-v">3.16</div><div class="spec-l">Acres</div></div>
+        <div class="spec"><div class="spec-v">3,214</div><div class="spec-l">Sq ft</div></div>
+      </div>
+    </div>
+    <div class="card-foot">
+      <a class="btn btn-amber" href="https://www.landsearch.com/properties/727-s-basalt-rd-spokane-wa-99224/5209440" target="_blank">View Listing</a>
+      <a class="btn btn-outline" href="https://www.zillow.com/homes/727-S-Basalt-Rd-Spokane-WA-99224_rb/" target="_blank">Zillow</a>
+    </div>
+    <div class="vote-row">
+      <button class="vbtn vbtn-jon" id="jon-basalt" onclick="vote('basalt','jon')">Jon's Favorite</button>
+      <button class="vbtn vbtn-sarah" id="sarah-basalt" onclick="vote('basalt','sarah')">Sarah's Favorite</button>
+    </div>
+  </div>
+
+  <!-- SCOTTS RIDGE -->
+  <div class="card" id="card-scotts">
+    <div class="card-bar ">
+      <span class="card-rank ">Most Land / $</span>
+      <div class="tag-row"><span class="tag tag-slate">Chattaroy</span><span class="tag tag-green">12.5 Acres</span></div>
+    </div>
+    <div class="both-banner" id="both-scotts">Both of you want to see this one.</div>
+    <div class="card-main">
+      <div class="card-price-row"><div class="card-price">$594,995</div></div>
+      <div class="card-addr">27601 N Scotts Ridge Ln, Chattaroy WA 99003</div>
+      <div class="why-label">Why This Property</div>
+      <div class="why-title">The most land for the money — 12.5 acres under $600K on a private ridge.</div>
+      <div class="why-body">At $594,995 for 12.5 acres, this is the best land-per-dollar option on the list. 2,194 sqft, 3 bed / 2 bath, on a private ridge lane about 30 minutes north in Chattaroy. The trade-off is the most rural setting of the group — longest driveway, most to maintain, and internet the most in question. Best if the land itself is the draw and you'd add a 3rd bath later. Verify fiber/cable and well/septic before this goes on the shortlist.</div>
+      <div class="highlights">
+        <div class="hl"><div class="hl-label">Land</div><div class="hl-value good">12.5 acres — most on list</div></div>
+        <div class="hl"><div class="hl-label">Value</div><div class="hl-value good">Lowest $/acre of the farms</div></div>
+        <div class="hl"><div class="hl-label">Baths</div><div class="hl-value warn">2 BA — add 3rd</div></div>
+        <div class="hl"><div class="hl-label">Internet</div><div class="hl-value warn">Verify per address</div></div>
+      </div>
+      <div class="specs-strip">
+        <div class="spec"><div class="spec-v">3</div><div class="spec-l">Beds</div></div>
+        <div class="spec"><div class="spec-v">2</div><div class="spec-l">Baths</div></div>
+        <div class="spec"><div class="spec-v">12.5</div><div class="spec-l">Acres</div></div>
+        <div class="spec"><div class="spec-v">2,194</div><div class="spec-l">Sq ft</div></div>
+      </div>
+    </div>
+    <div class="card-foot">
+      <a class="btn btn-dark" href="https://www.landsearch.com/properties/27601-n-scotts-ridge-ln-chattaroy-wa-99003/5012188" target="_blank">View Listing</a>
+      <a class="btn btn-outline" href="https://www.zillow.com/homes/27601-N-Scotts-Ridge-Ln-Chattaroy-WA-99003_rb/" target="_blank">Zillow</a>
+    </div>
+    <div class="vote-row">
+      <button class="vbtn vbtn-jon" id="jon-scotts" onclick="vote('scotts','jon')">Jon's Favorite</button>
+      <button class="vbtn vbtn-sarah" id="sarah-scotts" onclick="vote('scotts','sarah')">Sarah's Favorite</button>
+    </div>
+  </div>
+
+  <!-- DUNN -->
+  <div class="card" id="card-dunn">
+    <div class="card-bar ">
+      <span class="card-rank ">Turnkey Farm Setup</span>
+      <div class="tag-row"><span class="tag tag-slate">Chattaroy</span><span class="tag tag-green">10 Acres</span></div>
+    </div>
+    <div class="both-banner" id="both-dunn">Both of you want to see this one.</div>
+    <div class="card-main">
+      <div class="card-price-row"><div class="card-price">$625,000</div></div>
+      <div class="card-addr">10420 E Dunn Rd, Chattaroy WA 99003</div>
+      <div class="why-label">Why This Property</div>
+      <div class="why-title">A flat, usable 10 acres — the classic Eastern Washington hobby-farm footprint.</div>
+      <div class="why-body">2,640 sqft on a full 10 acres in Chattaroy, about 30 minutes north. This is the textbook hobby-farm layout: pasture, room for a shop and animals, and single-level living. 3 bed / 2 bath — the square footage and land give you obvious room to add a 3rd bath. The largest house of the three Chattaroy/Deer Park 2-bath farms. Confirm internet per address; Chattaroy varies block to block.</div>
+      <div class="highlights">
+        <div class="hl"><div class="hl-label">Land</div><div class="hl-value good">10 flat, usable acres</div></div>
+        <div class="hl"><div class="hl-label">Size</div><div class="hl-value good">2,640 sqft</div></div>
+        <div class="hl"><div class="hl-label">Baths</div><div class="hl-value warn">2 BA — add 3rd</div></div>
+        <div class="hl"><div class="hl-label">Internet</div><div class="hl-value warn">Verify per address</div></div>
+      </div>
+      <div class="specs-strip">
+        <div class="spec"><div class="spec-v">3</div><div class="spec-l">Beds</div></div>
+        <div class="spec"><div class="spec-v">2</div><div class="spec-l">Baths</div></div>
+        <div class="spec"><div class="spec-v">10</div><div class="spec-l">Acres</div></div>
+        <div class="spec"><div class="spec-v">2,640</div><div class="spec-l">Sq ft</div></div>
+      </div>
+    </div>
+    <div class="card-foot">
+      <a class="btn btn-dark" href="https://www.landsearch.com/properties/10420-e-dunn-rd-chattaroy-wa-99003/5204187" target="_blank">View Listing</a>
+      <a class="btn btn-outline" href="https://www.zillow.com/homes/10420-E-Dunn-Rd-Chattaroy-WA-99003_rb/" target="_blank">Zillow</a>
+    </div>
+    <div class="vote-row">
+      <button class="vbtn vbtn-jon" id="jon-dunn" onclick="vote('dunn','jon')">Jon's Favorite</button>
+      <button class="vbtn vbtn-sarah" id="sarah-dunn" onclick="vote('dunn','sarah')">Sarah's Favorite</button>
+    </div>
+  </div>
+
+  <!-- OWENS -->
+  <div class="card" id="card-owens">
+    <div class="card-bar ">
+      <span class="card-rank ">Newest Listing</span>
+      <div class="tag-row"><span class="tag tag-slate">Deer Park</span><span class="tag tag-green">Just Listed</span></div>
+    </div>
+    <div class="both-banner" id="both-owens">Both of you want to see this one.</div>
+    <div class="card-main">
+      <div class="card-price-row"><div class="card-price">$639,000</div></div>
+      <div class="card-addr">1020 W Owens Rd, Deer Park WA 99006</div>
+      <div class="why-label">Why This Property</div>
+      <div class="why-title">Newest farm on the list — 9 fenced acres with room to grow into.</div>
+      <div class="why-body">Just listed. 2,300 sqft of single-level living on 9.1 fenced acres off Owens Rd, about 35 minutes north via US-395. Big enough for animals, a shop, and a garden without committing to a working ranch. 3 bed / 2 bath today — confirm whether the floor plan gives you a clean 3rd-bath path before it becomes a frontrunner. Deer Park has partial Ziply fiber; verify the exact address.</div>
+      <div class="highlights">
+        <div class="hl"><div class="hl-label">Status</div><div class="hl-value good">New — first to see it</div></div>
+        <div class="hl"><div class="hl-label">Land</div><div class="hl-value good">9.1 fenced acres</div></div>
+        <div class="hl"><div class="hl-label">Baths</div><div class="hl-value warn">2 BA — confirm 3rd path</div></div>
+        <div class="hl"><div class="hl-label">Internet</div><div class="hl-value warn">Partial Ziply — verify</div></div>
+      </div>
+      <div class="specs-strip">
+        <div class="spec"><div class="spec-v">3</div><div class="spec-l">Beds</div></div>
+        <div class="spec"><div class="spec-v">2</div><div class="spec-l">Baths</div></div>
+        <div class="spec"><div class="spec-v">9.1</div><div class="spec-l">Acres</div></div>
+        <div class="spec"><div class="spec-v">2,300</div><div class="spec-l">Sq ft</div></div>
+      </div>
+    </div>
+    <div class="card-foot">
+      <a class="btn btn-dark" href="https://www.landsearch.com/properties/1020-w-owens-rd-deer-park-wa-99006/5259874" target="_blank">View Listing</a>
+      <a class="btn btn-outline" href="https://www.zillow.com/homes/1020-W-Owens-Rd-Deer-Park-WA-99006_rb/" target="_blank">Zillow</a>
+    </div>
+    <div class="vote-row">
+      <button class="vbtn vbtn-jon" id="jon-owens" onclick="vote('owens','jon')">Jon's Favorite</button>
+      <button class="vbtn vbtn-sarah" id="sarah-owens" onclick="vote('owens','sarah')">Sarah's Favorite</button>
+    </div>
+  </div>
+
+  <!-- SHORT -->
+  <div class="card" id="card-short">
+    <div class="card-bar ">
+      <span class="card-rank ">Biggest House</span>
+      <div class="tag-row"><span class="tag tag-slate">Deer Park</span><span class="tag tag-green">Price Reduced</span></div>
+    </div>
+    <div class="both-banner" id="both-short">Both of you want to see this one.</div>
+    <div class="card-main">
+      <div class="card-price-row"><div class="card-price">$675,000</div><span class="card-price-note">Price Reduced</span></div>
+      <div class="card-addr">28310 N Short Rd, Deer Park WA 99006</div>
+      <div class="why-label">Why This Property</div>
+      <div class="why-title">The most house of the group — 3,300 sqft on a manageable 5 acres.</div>
+      <div class="why-body">The biggest home here at 3,300 sqft, 4 bed / 2.5 bath, on a right-sized 5 acres — enough for a hobby setup without a full ranch's upkeep. A $20K price reduction signals a motivated seller. At $675K it's at the top of budget, so offer below ask. The half-bath is an easy convert to a full 3rd bath. Deer Park, about 38 minutes north.</div>
+      <div class="highlights">
+        <div class="hl"><div class="hl-label">Size</div><div class="hl-value good">3,300 sqft — largest</div></div>
+        <div class="hl"><div class="hl-label">Land</div><div class="hl-value good">5 acres — manageable</div></div>
+        <div class="hl"><div class="hl-label">Leverage</div><div class="hl-value good">$20K price drop</div></div>
+        <div class="hl"><div class="hl-label">Note</div><div class="hl-value warn">Top of budget — offer under</div></div>
+      </div>
+      <div class="specs-strip">
+        <div class="spec"><div class="spec-v">4</div><div class="spec-l">Beds</div></div>
+        <div class="spec"><div class="spec-v">2.5</div><div class="spec-l">Baths</div></div>
+        <div class="spec"><div class="spec-v">5</div><div class="spec-l">Acres</div></div>
+        <div class="spec"><div class="spec-v">3,300</div><div class="spec-l">Sq ft</div></div>
+      </div>
+    </div>
+    <div class="card-foot">
+      <a class="btn btn-dark" href="https://www.landsearch.com/properties/28310-n-short-rd-deer-park-wa-99006/5152056" target="_blank">View Listing</a>
+      <a class="btn btn-outline" href="https://www.zillow.com/homes/28310-N-Short-Rd-Deer-Park-WA-99006_rb/" target="_blank">Zillow</a>
+    </div>
+    <div class="vote-row">
+      <button class="vbtn vbtn-jon" id="jon-short" onclick="vote('short','jon')">Jon's Favorite</button>
+      <button class="vbtn vbtn-sarah" id="sarah-short" onclick="vote('short','sarah')">Sarah's Favorite</button>
+    </div>
+  </div>
+
+  <div class="sh">Complete Acreage List — In Budget (≤ $700K)</div>
+  <p style="font-size:12px;color:var(--text-2);margin-bottom:10px;">Every acreage home on the market now in your range, Spokane County. Tap any address for full details and photos. &#9733; = has a detailed card above.</p>
+  <div class="tbl-wrap"><table class="tbl">
+    <tr><th>Property</th><th>Price</th><th>Ac</th><th>BD/BA</th><th>Sqft</th></tr>
+    <tr><td><a href="https://www.landsearch.com/properties/4875-w-enoch-rd-deer-park-wa-99006/5238477" target="_blank"><strong>4875 W Enoch Rd</strong><br><span style="color:var(--text-3);font-size:11px;">Deer Park 99006</span></a></td><td>$440K</td><td>11</td><td>3/1.5</td><td>1,280</td></tr>
+    <tr><td><a href="https://www.landsearch.com/properties/6205-n-ormond-rd-otis-orchards-wa-99027/5179975" target="_blank"><strong>6205 N Ormond Rd</strong><br><span style="color:var(--text-3);font-size:11px;">Otis Orchards 99027</span></a></td><td>$470K</td><td>5</td><td>4/2</td><td>1,774</td></tr>
+    <tr class="row-amber"><td><a href="https://www.landsearch.com/properties/3517-w-washington-rd-spokane-wa-99224/5237941" target="_blank"><strong>3517 W Washington Rd &#9733;</strong><br><span style="color:var(--text-3);font-size:11px;">Spokane 99224 · 3 full baths</span></a></td><td>$520K</td><td>9.77</td><td>4/3</td><td>1,906</td></tr>
+    <tr><td><a href="https://www.landsearch.com/properties/18105-e-32nd-ave-greenacres-wa-99016/5018955" target="_blank"><strong>18105 E 32nd Ave</strong><br><span style="color:var(--text-3);font-size:11px;">Greenacres 99016</span></a></td><td>$545K</td><td>4.74</td><td>3/1</td><td>1,848</td></tr>
+    <tr><td><a href="https://www.landsearch.com/properties/3716-n-westwood-ln-spokane-wa-99224/5166466" target="_blank"><strong>3716 N Westwood Ln</strong><br><span style="color:var(--text-3);font-size:11px;">Spokane 99224</span></a></td><td>$550K</td><td>10</td><td>3/2</td><td>1,296</td></tr>
+    <tr><td><a href="https://www.landsearch.com/properties/27601-n-scotts-ridge-ln-chattaroy-wa-99003/5012188" target="_blank"><strong>27601 N Scotts Ridge Ln &#9733;</strong><br><span style="color:var(--text-3);font-size:11px;">Chattaroy 99003 · most land/$</span></a></td><td>$595K</td><td>12.5</td><td>3/2</td><td>2,194</td></tr>
+    <tr class="row-amber"><td><a href="https://www.landsearch.com/properties/727-s-basalt-rd-spokane-wa-99224/5209440" target="_blank"><strong>727 S Basalt Rd &#9733;</strong><br><span style="color:var(--text-3);font-size:11px;">Spokane 99224 · 3 full baths</span></a></td><td>$600K</td><td>3.16</td><td>4/3</td><td>3,214</td></tr>
+    <tr><td><a href="https://www.landsearch.com/properties/10420-e-dunn-rd-chattaroy-wa-99003/5204187" target="_blank"><strong>10420 E Dunn Rd &#9733;</strong><br><span style="color:var(--text-3);font-size:11px;">Chattaroy 99003</span></a></td><td>$625K</td><td>10</td><td>3/2</td><td>2,640</td></tr>
+    <tr><td><a href="https://www.landsearch.com/properties/1020-w-owens-rd-deer-park-wa-99006/5259874" target="_blank"><strong>1020 W Owens Rd &#9733;</strong><br><span style="color:var(--text-3);font-size:11px;">Deer Park 99006 · just listed</span></a></td><td>$639K</td><td>9.1</td><td>3/2</td><td>2,300</td></tr>
+    <tr><td><a href="https://www.landsearch.com/properties/14510-w-pine-bluff-rd-nine-mile-falls-wa-99026/5087077" target="_blank"><strong>14510 W Pine Bluff Rd &#9888;</strong><br><span style="color:var(--text-3);font-size:11px;">Nine Mile Falls 99026 · internet risk</span></a></td><td>$650K</td><td>19.3</td><td>4/3</td><td>3,074</td></tr>
+    <tr><td><a href="https://www.landsearch.com/properties/28310-n-short-rd-deer-park-wa-99006/5152056" target="_blank"><strong>28310 N Short Rd &#9733;</strong><br><span style="color:var(--text-3);font-size:11px;">Deer Park 99006 · biggest house</span></a></td><td>$675K</td><td>5</td><td>4/2.5</td><td>3,300</td></tr>
+    <tr><td><a href="https://www.landsearch.com/properties/25106-w-carman-ln-cheney-wa-99004/5208150" target="_blank"><strong>25106 W Carman Ln</strong><br><span style="color:var(--text-3);font-size:11px;">Cheney 99004 · 35 ac, only 2 BD</span></a></td><td>$699K</td><td>35</td><td>2/2</td><td>1,929</td></tr>
+  </table></div>
+  <p style="font-size:12px;color:var(--text-2);margin-b
