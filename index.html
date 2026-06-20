@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="robots" content="noindex, nofollow">
 <title>Spokane — Jon & Sarah Washey</title>
 <style>
   :root {
@@ -316,6 +315,7 @@
   </div>
   <div class="tabs">
     <div class="tab active" onclick="showTab('overview')">Overview</div>
+    <div class="tab" onclick="showTab('newlistings')">New Listings</div>
     <div class="tab" onclick="showTab('listings')">Top Picks</div>
     <div class="tab" onclick="showTab('gobig')">Go Big</div>
     <div class="tab" onclick="showTab('valley')">Valley Comps</div>
@@ -371,6 +371,95 @@
     <tr><td>1821 S Viewcrest Ln</td><td>$550K</td><td>$158</td></tr>
     <tr class="row-purple"><td><strong>7525 N Excell Dr — Go Big</strong></td><td>$420K+reno</td><td>—</td></tr>
   </table></div>
+  <div class="footer-space"></div>
+</div>
+
+<!-- ═══ NEW LISTINGS ═══ -->
+<div class="section" id="section-newlistings">
+  <div class="hero">
+    <div class="hero-eyebrow">Daily Market Scan</div>
+    <div class="hero-title">New Listings — Fri, June 19, 2026</div>
+    <div class="hero-sub">Auto-scanned against your must-haves: 3 BA minimum, full basement, $490K–$580K, target neighborhoods. Anything that clears the bar gets a full card and a vote button here; everything else is logged below with the reason it was screened out.</div>
+  </div>
+  <div class="summary-strip">
+    <div class="strip-card"><div class="strip-val">8</div><div class="strip-lbl">Scanned today</div></div>
+    <div class="strip-card"><div class="strip-val">1</div><div class="strip-lbl">Worth a look</div></div>
+    <div class="strip-card"><div class="strip-val">5</div><div class="strip-lbl">Screened out</div></div>
+  </div>
+  <div class="alert alert-amber">
+    <span class="alert-icon">&#9888;</span>
+    <span><strong>No clean match to every must-have today.</strong> The one candidate below clears beds, baths, budget and basement, but it's a 1.5-story (not a ranch) with a detached garage. Worth a tour if you'll flex on the ranch rule for the location — not a drop-everything.</span>
+  </div>
+
+  <div class="sh">Worth a Look</div>
+  <div class="card" id="card-nwblvd">
+    <div class="card-photo" id="photo-nwblvd">
+      <img src="https://images.homes.com/listings/102/5932783194-154242222/3028-w-northwest-blvd-spokane-wa-primaryphoto.jpg" alt="3028 W Northwest Blvd, Spokane WA 99205" loading="lazy">
+      <button class="photo-toggle" onclick="toggleOnePhoto('nwblvd')">Hide</button>
+    </div>
+    <div class="card-bar">
+      <span class="card-rank">Daily Scan &middot; Jun 19</span>
+      <div class="tag-row"><span class="tag tag-blue">Audubon (99205)</span><span class="tag tag-green">$3K Drop Today</span></div>
+    </div>
+    <div class="both-banner" id="both-nwblvd">Both of you want to see this one.</div>
+    <div class="card-main">
+      <div class="card-price-row">
+        <div class="card-price">$562,500</div><span class="card-price-note">$3K Drop</span>
+      </div>
+      <div class="card-addr">3028 W Northwest Blvd, Spokane WA 99205</div>
+      <div class="why-label">Match Verdict</div>
+      <div class="why-title">Clears beds, baths, budget &amp; basement — but it's a 1.5-story with a detached garage.</div>
+      <div class="why-body">Restored 1937 Craftsman Tudor, a 2-minute walk from Audubon Park in your strongest-resale zip. 4 bed / 3 bath confirmed: two beds plus a full bath on the main, a brand-new spa-style en-suite primary upstairs, and an egress bedroom, half bath, and rec room in the full basement (840 sqft below grade, partially finished with a rough-in bedroom). Hardwoods, gas forced-air heat, central A/C, and high-speed internet all confirmed; taxes ~$4,811/yr. Two misses against your must-haves: it's a 1.5-story rather than a single-level ranch, and the 2-car garage is detached, not attached. Corner lot is 6,835 sqft — above your 6,000 floor, below the 8,000 you'd prefer. Listed 5/14 and dropped $3K today, so there's some negotiating room. MLS 202617400.</div>
+      <div class="highlights">
+        <div class="hl"><div class="hl-label">Location</div><div class="hl-value good">Audubon (99205) — top resale</div></div>
+        <div class="hl"><div class="hl-label">Basement</div><div class="hl-value good">Full, partly finished + RI bdrm</div></div>
+        <div class="hl"><div class="hl-label">Style</div><div class="hl-value warn">1.5-story — not a ranch</div></div>
+        <div class="hl"><div class="hl-label">Garage</div><div class="hl-value warn">2-car detached</div></div>
+      </div>
+      <div class="specs-strip">
+        <div class="spec"><div class="spec-v">4</div><div class="spec-l">Beds</div></div>
+        <div class="spec"><div class="spec-v">3</div><div class="spec-l">Baths</div></div>
+        <div class="spec"><div class="spec-v">2,808</div><div class="spec-l">Sq ft</div></div>
+        <div class="spec"><div class="spec-v">$200</div><div class="spec-l">Per sqft</div></div>
+      </div>
+    </div>
+    <div class="card-foot">
+      <a class="btn btn-dark" href="https://www.homes.com/property/3028-w-northwest-blvd-spokane-wa/vb5gj8ckzjzqy/" target="_blank">View Listing</a>
+      <a class="btn btn-outline" href="https://www.homes.com/spokane-wa/audubon-downriver-neighborhood/houses-for-sale/" target="_blank">All Audubon</a>
+    </div>
+    <div class="vote-row">
+      <button class="vbtn vbtn-jon" id="jon-nwblvd" onclick="vote('nwblvd','jon')">Jon's Favorite</button>
+      <button class="vbtn vbtn-sarah" id="sarah-nwblvd" onclick="vote('nwblvd','sarah')">Sarah's Favorite</button>
+    </div>
+  </div>
+
+  <div class="sh">Screened Out Today</div>
+  <div class="tbl-wrap"><table class="tbl">
+    <tr><th>Address</th><th>Price</th><th>Bd/Ba</th><th>Why screened</th></tr>
+    <tr><td>5324 W Princeton Pl</td><td>$449.5K</td><td>4/2</td><td>Only 2 BA; under $490K floor</td></tr>
+    <tr><td>4515 N C St</td><td>$449K</td><td>5/2.5</td><td>No 3rd full bath; under floor</td></tr>
+    <tr><td>1808 W Kiernan Ave</td><td>$435K</td><td>4/2.5</td><td>No 3rd full bath; under floor</td></tr>
+    <tr><td>2617 W Cleveland Ave</td><td>$399.9K</td><td>4/3</td><td>Converted duplex; under floor</td></tr>
+    <tr><td>3433 W Wellesley Ave</td><td>$415K</td><td>4/1.5</td><td>Only 1.5 BA; under floor</td></tr>
+  </table></div>
+  <div class="alert alert-blue">
+    <span class="alert-icon">&#8505;</span>
+    <span>Most in-budget inventory this week sits in Audubon-Downriver at 2–2.5 baths. The 3-bath ranches you want are scarce right now — see Market Pulse below.</span>
+  </div>
+
+  <div class="sh">Market Pulse</div>
+  <div class="panel"><div class="panel-body">
+    <div class="panel-row"><div class="pr-label">Audubon-Downriver median</div><div class="pr-value">$358.5K &middot; +1% YoY</div></div>
+    <div class="panel-row"><div class="pr-label">Audubon supply</div><div class="pr-value warn">1.3 months — tight</div></div>
+    <div class="panel-row"><div class="pr-label">Audubon days on market</div><div class="pr-value">31 days avg</div></div>
+    <div class="panel-row"><div class="pr-label">Moran Prairie (12-mo median)</div><div class="pr-value">$559.5K</div></div>
+    <div class="panel-row"><div class="pr-label">Nine Mile Falls (May median list)</div><div class="pr-value bad">$667K — above budget</div></div>
+    <div class="panel-row"><div class="pr-label">Spokane citywide median list</div><div class="pr-value">~$449K</div></div>
+  </div></div>
+  <div class="alert alert-blue">
+    <span class="alert-icon">&#8505;</span>
+    <span>This page refreshes with each morning's scan. Clear matches land in <strong>Worth a Look</strong> with a vote button; favorites flow to the Overview shortlist. Nothing here is sent to Haydn automatically — an exceptional match gets flagged for you first.</span>
+  </div>
   <div class="footer-space"></div>
 </div>
 
@@ -1395,8 +1484,9 @@
 </div>
 
 <script>
-const TABS = ['overview','listings','gobig','valley','acreage','resale','trip','agent','scenarios'];
+const TABS = ['overview','newlistings','listings','gobig','valley','acreage','resale','trip','agent','scenarios'];
 const PROPS = {
+  nwblvd:    {addr:'3028 W Northwest Blvd', price:'$562.5K'},
   fleming:   {addr:'5907 N Fleming St', price:'$490K'},
   lowell:    {addr:'5609 W Lowell Ave', price:'$545K'},
   canyon:    {addr:'1907 S Canyon Woods Ln', price:'$519K'},
